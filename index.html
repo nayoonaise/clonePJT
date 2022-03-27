@@ -22,16 +22,16 @@
       href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap"
       rel="stylesheet"
     />
-    <!-- font css 추가하기 : font-family: 'Gowun Batang', -->
+    <!-- (NY) font css 추가하기 : font-family: 'Gowun Batang', -->
     <link rel="stylesheet" href="style.css" />
     <script src="main.js" defer></script>
   </head>
   <body>
     <nav id="navbar">
       <div class="navbar__logo">
-        <img src="images/favicon.png" width="20px" />
+        <img src="images/favicon.png" />
         <a href="#">Nayoung</a>
-        <!-- <a>에 # 넣는 머유? -->
+        <!-- (NY) <a>에 # 넣는 머유? -->
       </div>
       <ul class="navbar__menu">
         <li class="navbar__menu__item">Home</li>
@@ -46,7 +46,6 @@
     <section id="home">
       <img
         src="images/nayoonaise.jpg"
-        width="200px"
         alt="Nayoung's profile photo"
         class="home__avatar"
       />
@@ -101,7 +100,6 @@
             src="images/samsungsds_logo.jpg"
             alt="SAMSUNGSDS_LOGO"
             class="job__logo"
-            width="200px"
           />
           <p class="job__name">Software Engineer</p>
           <p class="job__period">2019.11 - ongoing</p>
@@ -111,7 +109,6 @@
             src="images/samsungsds_logo.jpg"
             alt="SAMSUNGSDS_LOGO"
             class="job__logo"
-            width="200px"
           />
           <p class="job__name">Server Engineer</p>
           <p class="job__period">2017.08 - 2019.11</p>
@@ -306,6 +303,7 @@
             alt="project7.png"
           />
         </a>
+        <!-- (NY) <a> 에 target="blank" 하면 빈창 뜸. -->
         <a
           href="https://www.youtube.com/watch?v=KshdN3vBijc"
           class="project"
@@ -320,7 +318,36 @@
       </div>
     </section>
     <!-- Testimonials -->
-    <section id="testimonial"></section>
+    <section id="testimonial">
+      <h1>Testimonials</h1>
+      <h3>See what they said about me</h3>
+      <div class="testimonials">
+        <div class="testimonial">
+          <img src="images/nayoonaise.jpg" alt="" class="testimonial__avatar" />
+          <div class="testimonial__speech-bubble">
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem
+              quos temporibus beatae maxime unde provident ducimus
+              necessitatibus nobis, ipsa eaque? Officia, assumenda sed minima
+              nesciunt nemo cumque omnis cum consectetur?
+            </p>
+            <p class="name"><a href="">Ellie</a> / Samsung</p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <img src="images/nayoonaise.jpg" alt="" class="testimonial__avatar" />
+          <div class="testimonial__speech-bubble">
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem
+              quos temporibus beatae maxime unde provident ducimus
+              necessitatibus nobis, ipsa eaque? Officia, assumenda sed minima
+              nesciunt nemo cumque omnis cum consectetur?
+            </p>
+            <p class="name"><a href="">Ellie</a> / Samsung</p>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Content -->
     <section id="content"></section>
   </body>
