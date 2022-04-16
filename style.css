@@ -25,7 +25,7 @@
     --weight-semi-bold: 600;
     --weight-regular: 400;
     /* size */
-    --size-border-raadius: 4px;
+    --size-border-radius: 4px;
     /* Animation */
     --animation-duration: 300ms;
 }
@@ -123,7 +123,7 @@ p {
     padding: 8px 12px;
     margin: 0 4px;
     cursor: pointer;
-    border-radius: var(--size-border-raadius);
+    border-radius: var(--size-border-radius);
 }
 
 .navbar__menu__item.active {
@@ -138,8 +138,8 @@ p {
 /* Home */
 
 #home {
-    background: url("images/projects/homebackground.png") center/cover no-repeat;
     padding: 40px;
+    background: url("images/projects/homebackground.png") center/cover no-repeat;
     text-align: center;
 }
 
@@ -162,7 +162,7 @@ p {
     margin: 24px;
     padding: 8px 12px;
     border: 2px solid var(--color-white);
-    border-radius: var(--size-border-raadius);
+    border-radius: var(--size-border-radius);
 }
 
 
@@ -315,7 +315,7 @@ p {
 
 .category__btn {
     border: 1px solid var(--color-dark-white);
-    border-radius: var(--size-border-raadius);
+    border-radius: var(--size-border-radius);
     font-size: var(--font-regular);
     padding: 8px 48px;
 }
@@ -405,4 +405,59 @@ p {
 
 .project__description h3 {
     color: var(--color-white);
+}
+
+
+/* Testimonial */
+
+#testimonial {
+    background-color: var(--color-light-white);
+}
+
+.testimonials {
+    margin: 40px
+}
+
+.testimonial {
+    display: flex;
+    margin: 32px 0;
+}
+
+.testimonial__avatarbox {
+    min-width: 150px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-white);
+    overflow: hidden;
+}
+
+.testimonial__avatar {
+    height: 100%;
+    margin: 12px;
+}
+
+.testimonial__avatarbox:nth-child(odd) {
+    margin-right: 40px;
+}
+
+.testimonial__avatarbox:nth-child(even) {
+    margin-left: 40px;
+}
+
+.testimonial__speech-bubble {
+    padding: 18px;
+    background-color: var(--color-white);
+    border-radius: var(--size-border-radius);
+}
+
+.testimonial__speech-bubble p {
+    color: var(--color-light-grey);
+}
+
+.testimonial__speech-bubble a {
+    color: var(--color-pink);
 }
