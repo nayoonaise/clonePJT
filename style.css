@@ -134,6 +134,15 @@ p {
     background-color: var(--color-dark-pink);
 }
 
+.navbar__toggle-btn {
+    position: absolute;
+    right: 32px;
+    top: 24px;
+    font-size: 24px;
+    color: var(--color-white);
+    display: none;
+}
+
 
 /* Home */
 
@@ -361,6 +370,8 @@ p {
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
+    ;
 }
 
 .project__img {
@@ -488,4 +499,42 @@ p {
 .contact__links i:hover {
     transform: scale(1.2);
     color: var(--color-dark-pink);
+}
+
+
+/* 반응형, For below 768px screen width 
+최소한의 것들만 들어와야 함. 차이점만 서술 */
+
+@media screen and (max-width:768px) {
+    .navbar__toggle-btn {
+        display: block;
+    }
+    #navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar__menu {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        display: none;
+    }
+    .about__majors {
+        flex-direction: column;
+    }
+    .major {
+        margin-bottom: 38px;
+    }
+    .skillset {
+        flex-direction: column;
+    }
+    .project {
+        /* 화면이 작아지면 아이템이 커져서 너비를 채움. */
+        flex-grow: 1;
+    }
+    .testimonial__avatarbox {
+        min-width: 80px;
+        width: 80px;
+        height: 80px;
+    }
 }
