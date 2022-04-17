@@ -14,6 +14,15 @@ document.addEventListener('scroll', () => {
 
 
 // Scroll
+
+function scrollIntoView(query) {
+    const el = document.querySelector(query);
+    if (!el) {
+        return;
+    }
+    el.scrollIntoView({ behavior: 'smooth' });
+}
+
 function scrollToMenu(e) {
     // Element.scrollTop - visual viewport 기준으로 특정 엘리먼트의 거리.
     // + Element.scrollBy() - 얼마나 스크롤할지  
@@ -32,11 +41,10 @@ function scrollToMenu(e) {
     const menuName = `${e.target.dataset.menu}`;
     if (menuName === 'undefined') { return; }
     console.log(":: " + menuName)
-    const el = document.getElementById(menuName);
-    console.log(el);
-    console.log(el.scrollTop);
-    console.log(el.scrollHeight);
-    console.log(el.innerHeight);
-    el.scrollIntoView({ behavior: 'smooth' })
+    scrollIntoView(menuName);
 }
+
 document.querySelector('.navbar__menu').addEventListener('click', e => scrollToMenu(e));
+document.querySelector('#home .home__contact').addEventListener('click', e => {
+    scrollIntoView('#contact');
+})
