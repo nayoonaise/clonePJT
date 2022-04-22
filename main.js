@@ -1,10 +1,24 @@
 'use strict';
 
 
+
+// Opacity
+const homeEl = document.querySelector(".home__container");
+const homeSectionheight = homeEl.getBoundingClientRect().height;
+function controlOpacity () {
+    if(homeSectionheight >= window.scrollY) {
+        const opacity = 1-(window.scrollY/homeSectionheight);
+        homeEl.style.opacity = opacity;
+    } else {
+        homeEl.style.opacity = 1;
+    }
+}
 // Make navbar transparent when it's on the top
 const navbar = document.querySelector("#navbar");
 const navbarHeight = navbar.getBoundingClientRect().height;
 document.addEventListener('scroll', () => {
+    controlOpacity();
+
     if (window.scrollY > navbarHeight) {
         navbar.classList.add('navbar--dark');
     } else {
