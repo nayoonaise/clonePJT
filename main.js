@@ -54,7 +54,6 @@ function scrollToMenu(e) {
     // + visual viewport - 유저 기기에 보여지는 영역
     const menuName = `${e.target.dataset.menu}`;
     if (menuName === 'undefined') { return; }
-    console.log(":: " + menuName)
     scrollIntoView(menuName);
 }
 
@@ -62,3 +61,19 @@ document.querySelector('.navbar__menu').addEventListener('click', e => scrollToM
 document.querySelector('#home .home__contact').addEventListener('click', e => {
     scrollIntoView('#contact');
 })
+
+
+// Show scroll-up button when scrolling down
+const arrowButton = document.querySelector(".arrow-up");
+document.addEventListener('scroll', () => {
+    if(window.scrollY > homeSectionheight/2) {
+        arrowButton.classList.add('arrow-up--visible')
+    } else {
+        arrowButton.classList.remove('arrow-up--visible')
+    }
+})
+
+// Scroll To Top
+arrowButton.addEventListener('click', () => {
+    window.scrollTo( {top:0, behavior:'smooth'} );
+});
