@@ -29,6 +29,8 @@ document.addEventListener('scroll', () => {
 
 // Scroll
 
+const navbarContainer = document.querySelector('.navbar__menu');
+
 function scrollIntoView(query) {
     const el = document.querySelector(query);
     if (!el) {
@@ -57,7 +59,8 @@ function scrollToMenu(e) {
     scrollIntoView(menuName);
 }
 
-document.querySelector('.navbar__menu').addEventListener('click', e => scrollToMenu(e));
+navbarContainer.addEventListener('click', e => {
+    scrollToMenu(e);});
 document.querySelector('#home .home__contact').addEventListener('click', e => {
     scrollIntoView('#contact');
 })
@@ -85,11 +88,19 @@ const workBtnContainer = document.querySelector(".work__categories");
 const projectContainer = document.querySelector(".work__projects");
 const projects = document.querySelectorAll(".project");
 
+function activateMenu(e) {
+    workBtnContainer.querySelectorAll(".category__btn").forEach(x => x.classList.remove("active"));
+    e.target.classList.add("active");
+}
+
 workBtnContainer.addEventListener('click', e => {
     const category = e.target.dataset.category ||  e.target.parentNode.dataset.category;
     if(category === null) {
         return;
-    }    
+    }
+    
+    activateMenu(e);
+
     projectContainer.classList.add("anime-out");
     setTimeout(() => {
         projects.forEach(project => {
@@ -103,3 +114,5 @@ workBtnContainer.addEventListener('click', e => {
         projectContainer.classList.remove("anime-out");
     }, 300)
 })
+
+// highlight button
