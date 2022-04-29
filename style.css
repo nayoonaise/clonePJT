@@ -375,18 +375,27 @@ p {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    transition: all var(--animation-duration) ease-out;
+}
+
+.work__projects.anime-out{
+    opacity: 0.6;
+    transform: scale(0.96) translateY(10px);
 }
 
 .project {
     width: 200px;
-    height: 250px;
+    height: 150px;
     margin: 2px;
     background-color: var(--color-light-white);
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    ;
+}
+
+.project.invisible {
+    display: none ;
 }
 
 .project__img {

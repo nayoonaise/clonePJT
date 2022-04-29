@@ -77,3 +77,29 @@ document.addEventListener('scroll', () => {
 arrowButton.addEventListener('click', () => {
     window.scrollTo( {top:0, behavior:'smooth'} );
 });
+
+
+// Projects
+// category button 
+const workBtnContainer = document.querySelector(".work__categories");
+const projectContainer = document.querySelector(".work__projects");
+const projects = document.querySelectorAll(".project");
+
+workBtnContainer.addEventListener('click', e => {
+    const category = e.target.dataset.category ||  e.target.parentNode.dataset.category;
+    if(category === null) {
+        return;
+    }    
+    projectContainer.classList.add("anime-out");
+    setTimeout(() => {
+        projects.forEach(project => {
+            const type = project.dataset.categorytype;
+            if(category === type || category === "*"){
+                project.classList.remove('invisible')  
+            }        else {
+                project.classList.add('invisible');
+            }
+        });
+        projectContainer.classList.remove("anime-out");
+    }, 300)
+})
