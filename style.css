@@ -142,8 +142,8 @@ p {
 
 .navbar__toggle-btn {
     position: absolute;
-    right: 32px;
-    top: 24px;
+    right: 16px;
+    top: 41px;
     font-size: 24px;
     color: var(--color-white);
     display: none;
@@ -556,6 +556,11 @@ p {
 최소한의 것들만 들어와야 함. 차이점만 서술 */
 
 @media screen and (max-width:768px) {
+    .navbar__logo {
+        padding-top: 17px;
+        padding-bottom: 17px;
+    }
+
     .navbar__toggle-btn {
         display: block;
     }
