@@ -8,7 +8,7 @@ function controlOpacity () {
         const opacity = 1-(window.scrollY/homeSectionheight);
         homeEl.style.opacity = opacity;
     } else {
-        homeEl.style.opacity = 1;
+        homeEl.style.opacity = 0;
     }
 }
 // Make navbar transparent when it's on the top

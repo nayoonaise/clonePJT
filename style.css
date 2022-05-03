@@ -185,6 +185,10 @@ p {
     border-radius: var(--size-border-radius);
 }
 
+.home__contact:hover {
+    background-color: var(--color-orange);
+}
+
 
 /* Section common */
 
@@ -336,7 +340,6 @@ p {
 .work__categories {
     margin: 40px;
     display: flex;
-    justify-content: center;
 }
 
 .category__btn {
@@ -344,6 +347,22 @@ p {
     border-radius: var(--size-border-radius);
     font-size: var(--font-regular);
     padding: 8px 24px;
+    position: relative;
+}
+
+.category__btn[data-category="*"] {
+    flex-basis:0;
+    flex-grow:1;
+
+}
+.category__btn[data-category="frontend"],
+.category__btn[data-category="backend"] {
+    flex-basis:2;
+    flex-grow:3;
+}
+.category__btn[data-category="mobile"] {
+    flex-basis:1;
+    flex-grow:2;
 }
 
 .category__btn.active {
@@ -363,7 +382,6 @@ p {
     top: 0;
 }
 
-
 .category__count {
     width: 24px;
     height: 24px;
@@ -372,9 +390,9 @@ p {
     background-color: var(--color-orange);
     border-radius: 50%;
     color: white;
-    position: relative;
+    position: absolute;
     top: -20px;
-    left: 4px;
+    right: 0px;
     opacity: 0;
     transition: all var(--animation-duration) ease-in;
 }
@@ -548,7 +566,6 @@ p {
     opacity: 0;
     pointer-events: none;
     transition: all var(--animation-duration) ease;
-    
 }
 .arrow-up--visible {
     opacity: 1;
@@ -561,10 +578,23 @@ p {
 
 @media screen and (max-width:768px) {
 
-    .navbar__logo {
-        padding-top: 1px;
+    :root {
+        /* Font size */
+    --font-large: 30px;
+    --font-medium: 18px;
+    --font-regular: 16px;
+    --font-small: 14px;
+    --font-micro: 12px;
+    }
+
+    .section {
+        padding : 16px;
+    }
+    .navbar__logo>img {
+        height: 17px;
     }
     .navbar__toggle-btn {
+        font-size:17px;
         display: block;
         transition: all var(--animation-duration) ease-in-out;
 
@@ -587,6 +617,8 @@ p {
         display: flex;
     }
     .about__majors {
+        margin-top: 30px;
+        margin-bottom:0px;
         flex-direction: column;
     }
     .major {
@@ -595,13 +627,42 @@ p {
     .skillset {
         flex-direction: column;
     }
+    .work__categories {
+        margin: 20px;
+        flex-wrap:wrap
+    }
     .project {
         /* 화면이 작아지면 아이템이 커져서 너비를 채움. */
         flex-grow: 1;
     }
+
+    .testimonial {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
     .testimonial__avatarbox {
         min-width: 80px;
         width: 80px;
         height: 80px;
     }
+    .testimonial__avatarbox:nth-child(even),
+    .testimonial__avatarbox:nth-child(odd) {
+        margin:0;
+        margin-bottom: 8px;
+    }
+    
+    .testimonial__speech-bubble {
+        order: 1;
+    }
+
+    .arrow-up {
+        bottom : 16px;
+        right: 16px;
+        width: 50px;
+        height:50px;
+        font-size: 35px;
+    }
+    
 }
