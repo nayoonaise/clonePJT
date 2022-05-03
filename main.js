@@ -16,7 +16,6 @@ const navbar = document.querySelector("#navbar");
 const navbarHeight = navbar.getBoundingClientRect().height;
 document.addEventListener('scroll', () => {
     controlOpacity();
-    navbarContainer.classList.remove('visible');
     if (window.scrollY > navbarHeight) {
         navbar.classList.add('navbar--dark');
     } else {
@@ -55,6 +54,7 @@ function scrollToMenu(e) {
     const menuName = `${e.target.dataset.menu}`;
     if (menuName === 'undefined') { return; }
     scrollIntoView(menuName);
+    closeMenu();
 }
 
 navbarContainer.addEventListener('click', e => {
@@ -65,9 +65,12 @@ document.querySelector('#home .home__contact').addEventListener('click', e => {
 
 // Navbar - Hamburger button
 const hamburgerBtn = document.querySelector(".navbar__toggle-btn");
+const closeMenu = () => {
+    navbarContainer.classList.remove('visible');
+}
 const toggleNavbar = () => {
     if(navbarContainer.classList.contains('visible')) {
-        navbarContainer.classList.remove('visible');
+        closeMenu();
     } else {
         navbarContainer.classList.add('visible');
     }
