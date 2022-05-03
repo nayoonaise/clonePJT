@@ -54,6 +54,8 @@ ul {
     list-style: none;
     /*(NY) 아이콘 없앰*/
     padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 button {
@@ -112,9 +114,11 @@ p {
 
 #navbar.navbar--dark {
     background-color: var(--color-pink);
+    padding: 8px;
 }
 
 .navbar__logo {
+    padding-left: 4px;
     font-size: var(--font-medium);
     font-weight: var(--weight-semi-bold);
 }
@@ -143,7 +147,7 @@ p {
 .navbar__toggle-btn {
     position: absolute;
     right: 16px;
-    top: 41px;
+    top: 22px;
     font-size: 24px;
     color: var(--color-white);
     display: none;
@@ -388,8 +392,8 @@ p {
 }
 
 .project {
-    width: 200px;
-    height: 150px;
+    width: 280px;
+    height: 200px;
     margin: 2px;
     background-color: var(--color-light-white);
     position: relative;
@@ -432,18 +436,18 @@ p {
 
 .project__description h3:after {
     content: '';
-    width: 25px;
+    width: 50px;
     height: 2px;
     background-color: var(--color-dark-white);
     display: block;
     position: relative;
     left: 50%;
-    margin-left: -12px;
+    transform: translateX(-50%);
     margin-top: 8px;
 }
 
 .project__description h3 {
-    color: var(--color-white);
+    color: var(--color-orange);
 }
 
 
@@ -556,25 +560,31 @@ p {
 최소한의 것들만 들어와야 함. 차이점만 서술 */
 
 @media screen and (max-width:768px) {
-    .navbar__logo {
-        padding-top: 17px;
-        padding-bottom: 17px;
-    }
 
+    .navbar__logo {
+        padding-top: 1px;
+    }
     .navbar__toggle-btn {
         display: block;
+        transition: all var(--animation-duration) ease-in-out;
+
+    }
+    #navbar.navbar--dark .navbar__toggle-btn {
+        top:14px;
     }
     #navbar {
         flex-direction: column;
         align-items: flex-start;
+        background-color: var(--color-pink);
     }
     .navbar__menu {
-        position: fixed;
         flex-direction: column;
         text-align: center;
         width: 100%;
         display: none;
-        background-color: transparent;
+    }
+    .navbar__menu.visible {
+        display: flex;
     }
     .about__majors {
         flex-direction: column;

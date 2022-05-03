@@ -1,7 +1,5 @@
 'use strict';
 
-
-
 // Opacity
 const homeEl = document.querySelector(".home__container");
 const homeSectionheight = homeEl.getBoundingClientRect().height;
@@ -18,7 +16,7 @@ const navbar = document.querySelector("#navbar");
 const navbarHeight = navbar.getBoundingClientRect().height;
 document.addEventListener('scroll', () => {
     controlOpacity();
-
+    navbarContainer.classList.remove('visible');
     if (window.scrollY > navbarHeight) {
         navbar.classList.add('navbar--dark');
     } else {
@@ -64,6 +62,20 @@ navbarContainer.addEventListener('click', e => {
 document.querySelector('#home .home__contact').addEventListener('click', e => {
     scrollIntoView('#contact');
 })
+
+// Navbar - Hamburger button
+const hamburgerBtn = document.querySelector(".navbar__toggle-btn");
+const toggleNavbar = () => {
+    if(navbarContainer.classList.contains('visible')) {
+        navbarContainer.classList.remove('visible');
+    } else {
+        navbarContainer.classList.add('visible');
+    }
+}
+hamburgerBtn.addEventListener('click', () => {
+    toggleNavbar();
+})
+
 
 
 // Show scroll-up button when scrolling down
@@ -115,4 +127,4 @@ workBtnContainer.addEventListener('click', e => {
     }, 300)
 })
 
-// highlight button
+
