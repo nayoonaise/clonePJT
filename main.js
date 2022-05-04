@@ -131,3 +131,39 @@ workBtnContainer.addEventListener('click', e => {
 })
 
 
+// Intersection Observer
+// 1. 관찰할 요소 가져오기
+const sections = document.querySelectorAll("section");
+const navbarBtns = document.querySelectorAll(`.navbar__menu__item`);
+
+// 2. Option, Callback 짜기
+// -Option; threshold 70%
+// -Callback; active 넣다 뺐다
+function activateNavbarMenu(menuName) {
+    navbarBtns.forEach(btn => {
+        if(btn.dataset['menu'] === `#${menuName}`){
+            btn.classList.add("active");
+        } else {
+            btn.classList.remove("active");
+        }
+    });
+}
+
+// 3. IntersectionObserver 생성
+const observerOptions = {
+    threshold: 0.9
+};
+const observer = new IntersectionObserver((entries, observer)=>{
+    entries.map(e => {
+        if(e.target.id) {
+            console.log(`:: section : ${e.target.id}`, e);
+
+            activateNavbarMenu(e.target.id);
+        }
+    })
+}, observerOptions);
+
+//4. observe!
+sections.forEach(section => observer.observe(section));
+
+
