@@ -566,6 +566,7 @@ p {
     right: 50px;
     width: 60px;
     height: 60px;
+    padding: 0;
     font-size: 50px;
     color: var(--color-white);
     border-radius: 50%;
