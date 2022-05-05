@@ -3,9 +3,10 @@
 // Opacity
 const homeEl = document.querySelector(".home__container");
 const homeSectionheight = homeEl.getBoundingClientRect().height;
-function controlOpacity () {
-    if(homeSectionheight >= window.scrollY) {
-        const opacity = 1-(window.scrollY/homeSectionheight);
+
+function controlOpacity() {
+    if (homeSectionheight >= window.scrollY) {
+        const opacity = 1 - (window.scrollY / homeSectionheight);
         homeEl.style.opacity = opacity;
     } else {
         homeEl.style.opacity = 0;
@@ -58,7 +59,8 @@ function scrollToMenu(e) {
 }
 
 navbarContainer.addEventListener('click', e => {
-    scrollToMenu(e);});
+    scrollToMenu(e);
+});
 document.querySelector('#home .home__contact').addEventListener('click', e => {
     scrollIntoView('#contact');
 })
@@ -69,7 +71,7 @@ const closeMenu = () => {
     navbarContainer.classList.remove('visible');
 }
 const toggleNavbar = () => {
-    if(navbarContainer.classList.contains('visible')) {
+    if (navbarContainer.classList.contains('visible')) {
         closeMenu();
     } else {
         navbarContainer.classList.add('visible');
@@ -84,7 +86,7 @@ hamburgerBtn.addEventListener('click', () => {
 // Show scroll-up button when scrolling down
 const arrowButton = document.querySelector(".arrow-up");
 document.addEventListener('scroll', () => {
-    if(window.scrollY > homeSectionheight/2) {
+    if (window.scrollY > homeSectionheight / 2) {
         arrowButton.classList.add('arrow-up--visible')
     } else {
         arrowButton.classList.remove('arrow-up--visible')
@@ -93,7 +95,7 @@ document.addEventListener('scroll', () => {
 
 // Scroll To Top
 arrowButton.addEventListener('click', () => {
-    window.scrollTo( {top:0, behavior:'smooth'} );
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 
@@ -109,20 +111,20 @@ function activateMenu(e) {
 }
 
 workBtnContainer.addEventListener('click', e => {
-    const category = e.target.dataset.category ||  e.target.parentNode.dataset.category;
-    if(category === null) {
+    const category = e.target.dataset.category || e.target.parentNode.dataset.category;
+    if (category === null) {
         return;
     }
-    
+
     activateMenu(e);
 
     projectContainer.classList.add("anime-out");
     setTimeout(() => {
         projects.forEach(project => {
             const type = project.dataset.categorytype;
-            if(category === type || category === "*"){
-                project.classList.remove('invisible')  
-            }        else {
+            if (category === type || category === "*") {
+                project.classList.remove('invisible')
+            } else {
                 project.classList.add('invisible');
             }
         });
@@ -159,7 +161,7 @@ function isScrollingUp(entryObject) {
 // -Callback; active 넣다 뺐다
 function activateNavbarMenu(menuName) {
     navbarBtns.forEach(btn => {
-        if(btn.dataset['menu'] === `#${menuName}`){
+        if (btn.dataset['menu'] === `${menuName}`) {
             btn.classList.add("active");
         } else {
             btn.classList.remove("active");
@@ -197,10 +199,9 @@ const observer = new IntersectionObserver((entries, observer) => {
                 activateNavbarMenu(nextMenu);
             }
         }
-    })
+    });
+
 }, observerOptions);
 
 //4. observe!
 sections.forEach(section => observer.observe(section));
-
-
