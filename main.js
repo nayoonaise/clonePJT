@@ -135,6 +135,24 @@ workBtnContainer.addEventListener('click', e => {
 // 1. 관찰할 요소 가져오기
 const sections = document.querySelectorAll("section");
 const navbarBtns = document.querySelectorAll(`.navbar__menu__item`);
+let activeMenuBtn = document.querySelector(`.navbar__menu__item.active`);
+const menuNames = Array.from(navbarBtns).map(x => x.dataset['menu']);
+
+function isFirstMenu(v) {
+    return menuNames[0] === `#${v}`
+}
+
+function isLastMenu(v) {
+    return menuNames[menuNames.length - 1] === `#${v}`
+}
+
+function getMenuOrder(v) {
+    return menuNames.findIndex(x => x === `#${v}`);
+}
+
+function isScrollingUp(entryObject) {
+    return entryObject.boundingClientRect.top < 0;
+}
 
 // 2. Option, Callback 짜기
 // -Option; threshold 70%
@@ -151,14 +169,33 @@ function activateNavbarMenu(menuName) {
 
 // 3. IntersectionObserver 생성
 const observerOptions = {
-    threshold: 0.9
+    threshold: [0.4],
+    root: null,
+    rootMargin: "0px"
 };
-const observer = new IntersectionObserver((entries, observer)=>{
-    entries.map(e => {
-        if(e.target.id) {
-            console.log(`:: section : ${e.target.id}`, e);
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(e => {
+        if (e.intersectionRatio > 0) {
+            const menuName = e.target.id;
+            let nextMenu;
 
-            activateNavbarMenu(e.target.id);
+            //console.log(`:: section : ${menuName}`, { intersectionRatio: e.intersectionRatio.toFixed(2), isIntersecting: e.isIntersecting, obj: e });
+
+            if (!e.isIntersecting) {
+                if (isScrollingUp(e)) {
+                    // scroll down
+                    nextMenu = menuNames[getMenuOrder(menuName) + 1];
+                } else {
+                    nextMenu = menuNames[getMenuOrder(menuName) - 1];
+                }
+            } else {
+                if (isFirstMenu(menuName) || isLastMenu(menuName)) {
+                    nextMenu = `#${menuName}`
+                }
+            }
+            if (!!nextMenu) {
+                activateNavbarMenu(nextMenu);
+            }
         }
     })
 }, observerOptions);
